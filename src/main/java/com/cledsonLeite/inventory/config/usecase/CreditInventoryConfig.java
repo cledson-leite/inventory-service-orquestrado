@@ -5,22 +5,22 @@ import org.springframework.context.annotation.Configuration;
 
 import com.cledsonLeite.inventory.adapter.out.SendMessageToKafkaAdapter;
 import com.cledsonLeite.inventory.adapter.out.UpdateInventoryAdapter;
-import com.cledsonLeite.inventory.application.core.useCase.DebitInventoryUsecase;
+import com.cledsonLeite.inventory.application.core.useCase.CreditInventoryUsecase;
 import com.cledsonLeite.inventory.application.core.useCase.FindInventoryByProductIdUseCase;
 
 @Configuration
-public class DebitInventoryConfig {
+public class CreditInventoryConfig {
 	
 	@Bean
-	public DebitInventoryUsecase debitInventoryUsecase (
-			FindInventoryByProductIdUseCase findInventoryByProductId,
+	public CreditInventoryUsecase creditInventoryUsecase(
+			FindInventoryByProductIdUseCase findIUsecase,
 			UpdateInventoryAdapter updateInventoryAdapter,
-			SendMessageToKafkaAdapter sendMessageToKafkaAdapter
+			SendMessageToKafkaAdapter sendUptadeInventoryAdapter
 			) {
-		return new DebitInventoryUsecase(
-				findInventoryByProductId,
+		return new CreditInventoryUsecase(
+				findIUsecase,
 				updateInventoryAdapter,
-				sendMessageToKafkaAdapter
+				sendUptadeInventoryAdapter
 				);
 	}
 
