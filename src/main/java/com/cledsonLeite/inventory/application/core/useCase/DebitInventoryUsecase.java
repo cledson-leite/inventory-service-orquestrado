@@ -34,9 +34,9 @@ public class DebitInventoryUsecase implements DebitInventoryInputPort{
 			Integer updateQuantity = inventory.getQuantity() - sale.getQuantity();
 			inventory.setQuantity(updateQuantity);
 			updateInventoryOutputPort.update(inventory);
-			sendUptadeInventoryOutputPort.send(sale, SaleEvent.UPDATE_INVENTURY);
+			sendUptadeInventoryOutputPort.send(sale, SaleEvent.INVENTORY_PREPARED);
 		} catch (Exception erro) {
-			sendUptadeInventoryOutputPort.send(sale, SaleEvent.ROLLBACK_INVENTORY);
+			sendUptadeInventoryOutputPort.send(sale, SaleEvent.INVENTORY_ERROR);
 		}
 		
 		
